@@ -1,7 +1,13 @@
+.gradle/
+build/
+
 # Eclipse stuff
 .classpath
 .project
 .settings/
+
+# VSCode stuff
+.vscode/
 
 # netbeans
 nbproject/
@@ -18,11 +24,11 @@ dependency-reduced-pom.xml
 .*.sw[a-p]
 
 # various other potential build files
-build/
 bin/
 dist/
 manifest.mf
 
+/work/Temp/
 work/1.*
 work/Minecraft
 work/BuildData
@@ -47,11 +53,15 @@ work/ForgeFlower
 .idea/
 out/
 
+# JetBrains Fleet
+.fleet/
+
 # Linux temp files
 *~
 
 # other stuff
 run/
+logs/
 
 Paper-Server
 Paper-API
@@ -59,3 +69,8 @@ Paperclip.jar
 paperclip.jar
 paperclip-*.jar
 paperclip.properties
+
+!gradle/wrapper/gradle-wrapper.jar
+
+test-plugin.settings.gradle.kts
+paper-api-generator.settings.gradle.kts

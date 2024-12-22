@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 gitcmd="git -c commit.gpgsign=false"
 
@@ -52,7 +52,7 @@ fi
 		if [ -f "$file" ] && [[ "$filedata" == *"<<<<<"* ]]; then
 			export summaryfail="$summaryfail\nFAILED TO APPLY: $i"
 		else
-			$gitcmd add "$i"
+			$gitcmd add --force "$i"
 			export summarygood="$summarygood\nAPPLIED CLEAN: $i"
 		fi
 	done

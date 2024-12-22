@@ -5,7 +5,7 @@ PS1="$"
 
 function changelog() {
     base=$(git ls-tree HEAD $1  | cut -d' ' -f3 | cut -f1)
-    cd $1 && git log --oneline ${base}...HEAD
+    cd $1 && git log --oneline ${base}...HEAD | sed -E 's/(^[0-9a-f]{8,}( (SPIGOT-[0-9]{1,4}|MC-[0-9]{1,6}),?)* |Revert ")#([0-9]+)/\1PR-\4/'
 }
 bukkit=$(changelog work/Bukkit)
 cb=$(changelog work/CraftBukkit)
@@ -25,7 +25,7 @@ if [ ! -z "$spigot" ]; then
     logsuffix="$logsuffix\n\nSpigot Changes:\n$spigot"
     if [ -z "$updated" ]; then updated="Spigot"; else updated="$updated/Spigot"; fi
 fi
-disclaimer="Upstream has released updates that appears to apply and compile correctly.\nThis update has not been tested by PaperMC and as with ANY update, please do your own testing"
+disclaimer="Upstream has released updates that appear to apply and compile correctly.\nThis update has not been tested by PaperMC and as with ANY update, please do your own testing"
 
 if [ ! -z "$1" ]; then
     disclaimer="$@"
